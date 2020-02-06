@@ -23,18 +23,9 @@ namespace FutureValue
                 Double.TryParse(txtRate.Text, out double interestRate) &&
                 Int32.TryParse(txtYears.Text, out int years))
             {
-                int totalMonths = years * 12;
-                double monthlyInterestRate = (interestRate / 12) / 100; // get the monthly interest rate, expressed as a decimal
-                double accountValue = 0;
+                CalculateFutureValue(monthlyInvestment, interestRate, years, out double accountValue);
 
-                for (int month = 0; month < totalMonths; month++)
-                {
-                    accountValue += monthlyInvestment;
-                    double interestEarned = accountValue * monthlyInterestRate; // the interest earned on the principal this month
-                    accountValue += interestEarned; 
-                }
-
-                txtFutureValue.Text = accountValue.ToString("c");
+                txtFutureValue.Text = accountValue.ToString("c"); // display account balance after the specified number of years
             }
             else
             {
@@ -42,9 +33,28 @@ namespace FutureValue
             }
         }
 
+        private void CalculateFutureValue(double monthlyInvestment, double interestRate, int years, out double accountValue)
+        {
+            int totalMonths = years * 12;
+            double monthlyInterestRate = (interestRate / 12) / 100; // get the monthly interest rate, expressed as a decimal
+            accountValue = 0;
+
+            for (int month = 0; month < totalMonths; month++)
+            {
+                accountValue += monthlyInvestment;
+                double interestEarned = accountValue * monthlyInterestRate; // the interest earned on the principal this month
+                accountValue += interestEarned;
+            }
+        }
+
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void ClearFutureValue(object sender, EventArgs e)
+        {
+            txtFutureValue.Text = "";
         }
     }
 }
