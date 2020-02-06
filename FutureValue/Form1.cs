@@ -56,5 +56,18 @@ namespace FutureValue
         {
             txtFutureValue.Text = "";
         }
+
+        private void Form1_DoubleClick(object sender, EventArgs e)
+        {
+            txtFutureValue.Text = "";
+            txtInvestment.Text = "";
+            txtRate.Text = "";
+            txtYears.Text = "";
+        }
+
+        private void txtRate_DoubleClick(object sender, EventArgs e)
+        {
+            txtRate.Text = "12";
+        }
     }
 }

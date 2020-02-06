@@ -47,6 +47,7 @@
             this.txtInvestment.Size = new System.Drawing.Size(100, 20);
             this.txtInvestment.TabIndex = 0;
             this.txtInvestment.TextChanged += new System.EventHandler(this.ClearFutureValue);
+            this.txtInvestment.MouseHover += new System.EventHandler(this.ClearFutureValue);
             // 
             // txtRate
             // 
@@ -55,6 +56,7 @@
             this.txtRate.Size = new System.Drawing.Size(100, 20);
             this.txtRate.TabIndex = 1;
             this.txtRate.TextChanged += new System.EventHandler(this.ClearFutureValue);
+            this.txtRate.DoubleClick += new System.EventHandler(this.txtRate_DoubleClick);
             // 
             // txtYears
             // 
@@ -149,6 +151,7 @@
             this.Controls.Add(this.txtInvestment);
             this.Name = "Form1";
             this.Text = "Future Value";
+            this.DoubleClick += new System.EventHandler(this.Form1_DoubleClick);
             this.ResumeLayout(false);
             this.PerformLayout();
 
